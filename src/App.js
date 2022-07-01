@@ -1,15 +1,20 @@
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, Global } from '@mantine/core';
 import { BrowserRouter } from 'react-router-dom';
 
 import Routes from './Routes';
+import { UserProvider } from './contexts/user';
 import theme from './styles/theme';
+import global from './styles/global';
 
 const App = () => {
     return (
         <MantineProvider theme={theme}>
-            <BrowserRouter>
-                <Routes />
-            </BrowserRouter>
+            <Global styles={global} />
+            <UserProvider>
+                <BrowserRouter>
+                    <Routes />
+                </BrowserRouter>
+            </UserProvider>
         </MantineProvider>
     );
 };

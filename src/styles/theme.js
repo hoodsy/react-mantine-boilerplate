@@ -26,7 +26,7 @@ const theme = {
         xl: 48,
     },
     shadows: {
-        md: '0 14px 40px rgb(0 0 0 / 40%)',
+        md: '0 14px 40px rgb(0 0 0 / 10%)',
     },
 };
 

@@ -2,9 +2,6 @@ import React from 'react';
 import { Button, Text, Title, Paper, createStyles } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
-    page: {
-        background: theme.colors.gray[1],
-    },
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -18,7 +15,7 @@ const Landing = () => {
     const { classes } = useStyles();
 
     return (
-        <div className={classes.page}>
+        <div>
             <Paper shadow="md" p="md" className={classes.container}>
                 <Title>Landing Page</Title>
                 <Text>
