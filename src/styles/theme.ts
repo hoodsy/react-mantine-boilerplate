@@ -1,4 +1,6 @@
-const theme = {
+import { MantineThemeOverride } from '@mantine/core';
+
+const theme: MantineThemeOverride = {
     fontFamily: 'Nunito, sans-serif',
     headings: {
         fontFamily: 'Josefin Sans, sans-serif',

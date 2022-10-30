@@ -1,4 +1,6 @@
-const global = (theme) => ({
+import { MantineTheme } from '@mantine/core';
+
+const global = (theme: MantineTheme): any => ({
     '*, *::before, *::after': {
         boxSizing: 'border-box',
     },

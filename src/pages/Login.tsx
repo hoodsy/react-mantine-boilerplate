@@ -11,7 +11,11 @@ import { useForm, joiResolver } from '@mantine/form';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Joi from 'joi';
 
-import { useUser } from '../contexts/user';
+import { useUser, ILoginArgs } from '../contexts/user';
+
+interface ILocationState {
+    path: string;
+}
 
 const useStyles = createStyles((theme) => ({
     container: {
@@ -23,10 +27,11 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Login = () => {
+    const { classes } = useStyles();
     const { login } = useUser();
     const navigate = useNavigate();
-    const { state } = useLocation();
-    const { classes } = useStyles();
+    const location = useLocation();
+    const { path } = location.state as ILocationState;
 
     const schema = Joi.object({
         email: Joi.string()
@@ -47,13 +52,13 @@ const Login = () => {
         schema: joiResolver(schema),
     });
 
-    const handleLogin = async (values) => {
+    const handleLogin = async (values: ILoginArgs) => {
         const error = await login(values);
 
         if (error) {
             form.setErrors({ email: 'Invalid email or password' });
         } else {
-            navigate(state?.path || '/dashboard');
+            navigate(path || '/dashboard');
         }
     };
 

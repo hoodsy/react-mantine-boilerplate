@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 import { useUser } from '../contexts/user';
 
-const RequireAuth = ({ children }) => {
+interface IProps {
+    children?: ReactNode;
+}
+
+const RequireAuth = ({ children }: IProps) => {
     const { isAuthenticated, userLoading } = useUser();
     const location = useLocation();
 
@@ -18,7 +22,7 @@ const RequireAuth = ({ children }) => {
     }
 
     return isAuthenticated ? (
-        children
+        <>{children}</>
     ) : (
         <Navigate to="/login" replace state={{ path: location.pathname }} />
     );

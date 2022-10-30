@@ -26,7 +26,7 @@ const Loading = () => {
                 navigate('/login');
             }
         }
-    }, [userLoading]);
+    }, [userLoading, isAuthenticated, navigate]);
 
     return (
         <Box mx="auto" className={classes.container}>
